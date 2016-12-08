@@ -1,0 +1,12 @@
+use_frameworks!
+
+target 'LightForm_Example' do
+  pod 'LightForm', :path => '../'
+
+  target 'LightForm_Tests' do
+    inherit! :search_paths
+
+    pod 'Specta'
+  pod 'Expecta'
+  end
+end
