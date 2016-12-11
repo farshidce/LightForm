@@ -2,12 +2,12 @@
 //  LightFormViewController.h
 //  LightForm
 //
-//  Created by Farshid Ghods on 12/07/2016.
-//  Copyright (c) 2016 Farshid Ghods. All rights reserved.
+//  Created by Farshid Ghods on 12/8/16.
+//  Copyright © 2016 Farshid Ghods. All rights reserved.
 //
 
-@import UIKit;
+#import <UIKit/UIKit.h>
 
-@interface LightFormViewController : UIViewController
+@interface LightFormViewController : UITableViewController
 
 @end

@@ -14,7 +14,6 @@
 		6003F598195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F596195388D20070C39A /* InfoPlist.strings */; };
 		6003F59A195388D20070C39A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F599195388D20070C39A /* main.m */; };
 		6003F59E195388D20070C39A /* LightFormAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F59D195388D20070C39A /* LightFormAppDelegate.m */; };
-		6003F5A7195388D20070C39A /* LightFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5A6195388D20070C39A /* LightFormViewController.m */; };
 		6003F5A9195388D20070C39A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5A8195388D20070C39A /* Images.xcassets */; };
 		6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F5AF195388D20070C39A /* XCTest.framework */; };
 		6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
@@ -23,6 +22,11 @@
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 		9729CACF81745D714DCBA1D9 /* Pods_LightForm_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B230C67B2E4004BF914CC50 /* Pods_LightForm_Example.framework */; };
+		E8B8BDF21DFA25920001BA8D /* LightFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8B8BDF11DFA25920001BA8D /* LightFormViewController.m */; };
+		E8FC3B731DF946E200B20A59 /* LightFormCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E8FC3B6D1DF946E200B20A59 /* LightFormCell.m */; };
+		E8FC3B741DF946E200B20A59 /* LightFormCellData.m in Sources */ = {isa = PBXBuildFile; fileRef = E8FC3B6F1DF946E200B20A59 /* LightFormCellData.m */; };
+		E8FC3B751DF946E200B20A59 /* LightFormStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = E8FC3B711DF946E200B20A59 /* LightFormStyle.m */; };
+		E8FC3B761DF946E200B20A59 /* ReplaceMe.m in Sources */ = {isa = PBXBuildFile; fileRef = E8FC3B721DF946E200B20A59 /* ReplaceMe.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,8 +54,6 @@
 		6003F59B195388D20070C39A /* LightForm-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LightForm-Prefix.pch"; sourceTree = "<group>"; };
 		6003F59C195388D20070C39A /* LightFormAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LightFormAppDelegate.h; sourceTree = "<group>"; };
 		6003F59D195388D20070C39A /* LightFormAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LightFormAppDelegate.m; sourceTree = "<group>"; };
-		6003F5A5195388D20070C39A /* LightFormViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LightFormViewController.h; sourceTree = "<group>"; };
-		6003F5A6195388D20070C39A /* LightFormViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LightFormViewController.m; sourceTree = "<group>"; };
 		6003F5A8195388D20070C39A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		6003F5AE195388D20070C39A /* LightForm_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LightForm_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F5AF195388D20070C39A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -64,6 +66,16 @@
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		8B230C67B2E4004BF914CC50 /* Pods_LightForm_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LightForm_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0A4EB16F6AD44C668E8F0B9 /* Pods-LightForm_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LightForm_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LightForm_Example/Pods-LightForm_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		E8B8BDF01DFA25920001BA8D /* LightFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LightFormViewController.h; sourceTree = "<group>"; };
+		E8B8BDF11DFA25920001BA8D /* LightFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LightFormViewController.m; sourceTree = "<group>"; };
+		E8B8BDF31DFB3D810001BA8D /* macrologger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = macrologger.h; sourceTree = "<group>"; };
+		E8FC3B6C1DF946E200B20A59 /* LightFormCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LightFormCell.h; sourceTree = "<group>"; };
+		E8FC3B6D1DF946E200B20A59 /* LightFormCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LightFormCell.m; sourceTree = "<group>"; };
+		E8FC3B6E1DF946E200B20A59 /* LightFormCellData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LightFormCellData.h; sourceTree = "<group>"; };
+		E8FC3B6F1DF946E200B20A59 /* LightFormCellData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LightFormCellData.m; sourceTree = "<group>"; };
+		E8FC3B701DF946E200B20A59 /* LightFormStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LightFormStyle.h; sourceTree = "<group>"; };
+		E8FC3B711DF946E200B20A59 /* LightFormStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LightFormStyle.m; sourceTree = "<group>"; };
+		E8FC3B721DF946E200B20A59 /* ReplaceMe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReplaceMe.m; sourceTree = "<group>"; };
 		FCB7260C40D9DE084219CC88 /* Pods-LightForm_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LightForm_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-LightForm_Example/Pods-LightForm_Example.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -98,6 +110,7 @@
 			children = (
 				60FF7A9C1954A5C5007DD14C /* Podspec Metadata */,
 				6003F593195388D20070C39A /* Example for LightForm */,
+				E8FC3B6B1DF9466D00B20A59 /* Sources */,
 				6003F5B5195388D20070C39A /* Tests */,
 				6003F58C195388D20070C39A /* Frameworks */,
 				6003F58B195388D20070C39A /* Products */,
@@ -132,9 +145,9 @@
 			children = (
 				6003F59C195388D20070C39A /* LightFormAppDelegate.h */,
 				6003F59D195388D20070C39A /* LightFormAppDelegate.m */,
+				E8B8BDF01DFA25920001BA8D /* LightFormViewController.h */,
+				E8B8BDF11DFA25920001BA8D /* LightFormViewController.m */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
-				6003F5A5195388D20070C39A /* LightFormViewController.h */,
-				6003F5A6195388D20070C39A /* LightFormViewController.m */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
 			);
@@ -193,6 +206,21 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		E8FC3B6B1DF9466D00B20A59 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				E8FC3B6C1DF946E200B20A59 /* LightFormCell.h */,
+				E8FC3B6D1DF946E200B20A59 /* LightFormCell.m */,
+				E8FC3B6E1DF946E200B20A59 /* LightFormCellData.h */,
+				E8FC3B6F1DF946E200B20A59 /* LightFormCellData.m */,
+				E8FC3B701DF946E200B20A59 /* LightFormStyle.h */,
+				E8FC3B711DF946E200B20A59 /* LightFormStyle.m */,
+				E8FC3B721DF946E200B20A59 /* ReplaceMe.m */,
+				E8B8BDF31DFB3D810001BA8D /* macrologger.h */,
+			);
+			name = Sources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -244,7 +272,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = LightForm;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Farshid Ghods";
 				TargetAttributes = {
 					6003F5AD195388D20070C39A = {
@@ -390,9 +418,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8FC3B751DF946E200B20A59 /* LightFormStyle.m in Sources */,
+				E8FC3B761DF946E200B20A59 /* ReplaceMe.m in Sources */,
 				6003F59E195388D20070C39A /* LightFormAppDelegate.m in Sources */,
-				6003F5A7195388D20070C39A /* LightFormViewController.m in Sources */,
+				E8FC3B731DF946E200B20A59 /* LightFormCell.m in Sources */,
+				E8B8BDF21DFA25920001BA8D /* LightFormViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
+				E8FC3B741DF946E200B20A59 /* LightFormCellData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,14 +479,19 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -487,13 +524,18 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
