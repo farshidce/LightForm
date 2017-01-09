@@ -10,7 +10,6 @@
 #import "LightFormCell.h"
 #import "LightFormCellData.h"
 #import "LightFormStyle.h"
-#import "macrologger.h"
 
 @interface LightFormViewController ()
 
@@ -24,23 +23,19 @@ NSArray *form;
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.tableView registerClass:[LightFormCell class] forCellReuseIdentifier:@"LightFormCell"];
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"DemoSectionCell"];
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 140;
+    self.tableView.sectionHeaderHeight = 0;
     self.tableView.separatorColor = [UIColor clearColor];
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.separatorInset = UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0);
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     form = [self createFormData];
-
-
     [self.tableView setNeedsLayout];
     [self.tableView layoutIfNeeded];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -50,20 +45,36 @@ NSArray *form;
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [form count];
+    if (section == 0) {
+        return 1;
+    } else if (section == 1) {
+        return [form count];
+    }
+    return 0;
 }
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LightFormCell"
+    NSString *cellIdentifier = nil;
+    if (indexPath.section == 0) {
+        cellIdentifier = @"DemoSectionCell";
+    } else if (indexPath.section == 1) {
+        cellIdentifier = @"LightFormCell";
+    }
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier
                                                             forIndexPath:indexPath];
     if (cell == nil) {
-        cell = [[LightFormCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                    reuseIdentifier:@"LightFormCell"];
+        if ([cellIdentifier isEqualToString:@"DemoSectionCell"]) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                          reuseIdentifier:cellIdentifier];
+        }
+        if ([cellIdentifier isEqualToString:@"LightFormCell"]) {
+            cell = [[LightFormCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                        reuseIdentifier:cellIdentifier];
+        }
     }
     cell.tag = indexPath.row;
     return cell;
@@ -72,8 +83,24 @@ NSArray *form;
 - (void)tableView:(UITableView *)tableView
   willDisplayCell:(UITableViewCell *)cell
 forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0) {
+        [self tableView:tableView willDisplayHeaderCell:cell];
+    } else if (indexPath.section == 1) {
+        [self tableView:tableView willDisplayLightFormCell:cell forRowAtIndexPath:indexPath];
+    }
+}
+
+- (void)    tableView:(UITableView *)tableView
+willDisplayHeaderCell:(UITableViewCell *)cell {
+    cell.textLabel.text = @"LightForm Demo";
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+}
+
+- (void)       tableView:(UITableView *)tableView
+willDisplayLightFormCell:(UITableViewCell *)cell
+       forRowAtIndexPath:(NSIndexPath *)indexPath {
     LightFormCell *lightFormCell = (LightFormCell *) cell;
-    lightFormCell.style = [[LightFormDefaultStyle alloc] init];
+    lightFormCell.style = [self createCellStyle];
     lightFormCell.data = [LightFormCellData fromDictionary:form[(NSUInteger) indexPath.row]];
     if ([form[(NSUInteger) indexPath.row][@"key"] isEqualToString:@"username"]) {
         [self tableView:tableView
@@ -91,83 +118,55 @@ willDisplayConfirmPasswordCell:lightFormCell
     [cell setNeedsLayout];
 }
 
-//[self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+- (LightFormDefaultStyle *)createCellStyle {
+    LightFormDefaultStyle *style = [[LightFormDefaultStyle alloc] init];
+    style.autocorrectionType = UITextAutocorrectionTypeNo;
+    // set the border color to dark blue when not selected
+    style.borderColor = UIColor.blackColor;
+    // set the border color to orange when selected
+    style.selectedBorderColor = UIColor.orangeColor;
+    return style;
 }
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [LightFormCell cellHeightForData:[LightFormCellData fromDictionary:form[(NSUInteger) indexPath.row]]
-                                  withStyle:[[LightFormDefaultStyle alloc] init]];
+    if (indexPath.section == 0) {
+        return 40.0;
+    } else {
+        return [LightFormCell cellHeightForData:[LightFormCellData fromDictionary:form[(NSUInteger) indexPath.row]]
+                                      withStyle:[[LightFormDefaultStyle alloc] init]];
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForHeaderInSection:(NSInteger)section {
+    return 0;
 }
 
 
 - (void)      tableView:(UITableView *)tableView
 willDisplayUsernameCell:(LightFormCell *)cell
       forRowAtIndexPath:(NSIndexPath *)indexPath {
-    [cell executeBlock:^(BOOL focused, NSString *input, BOOL error, BOOL returned, BOOL goToNext) {
-        NSLog(@"executeBlock %d %d %d for cell at row %tu", focused, error, returned, indexPath.row);
-        // if user has not entered any text but is focused show the errors
-        // if user has entered some text then if they are compliant then dont show any error
-        // otherwise show errors
+    [cell executeBlock:^(BOOL focused, NSString *input, BOOL validationsLabelVisible, BOOL returned, BOOL goToNext) {
+        NSLog(@"executeBlock %d %d %d for cell at row %tu", focused, validationsLabelVisible, returned, indexPath.row);
+        // if user has not entered any text but is focused show the validations
+        // if user has entered some text then if they are compliant then dont show any of the validations
         BOOL updatedNeeded = NO;
         if (input) {
             if (![LightFormViewController isUsernameCompliant:input]) {
-                form[(NSUInteger) indexPath.row][@"errors"] = [LightFormViewController usernameCompliance:input];
+                form[(NSUInteger) indexPath.row][@"validations"] = [LightFormViewController usernameCompliance:input];
             } else {
-                [form[(NSUInteger) indexPath.row] removeObjectForKey:@"errors"];
+                [form[(NSUInteger) indexPath.row] removeObjectForKey:@"validations"];
             }
             updatedNeeded = YES;
         } else {
             if (focused) {
-                form[(NSUInteger) indexPath.row][@"errors"] = [LightFormViewController usernameCompliance:input];
+                form[(NSUInteger) indexPath.row][@"validations"] = [LightFormViewController usernameCompliance:input];
                 updatedNeeded = YES;
             }
         }
         if (returned) {
             form[(NSUInteger) indexPath.row][@"value"] = input;
-            [form[(NSUInteger) indexPath.row] removeObjectForKey:@"errors"];
+            [form[(NSUInteger) indexPath.row] removeObjectForKey:@"validations"];
         }
         if (goToNext) {
             UIResponder *nextResponder = [self.view viewWithTag:cell.tag + 1];
@@ -186,26 +185,26 @@ willDisplayPasswordCell:(LightFormCell *)cell
       forRowAtIndexPath:(NSIndexPath *)indexPath {
     [cell executeBlock:^(BOOL focused, NSString *input, BOOL error, BOOL returned, BOOL goToNext) {
         NSLog(@"executeBlock %d %d %d for cell at row %tu", focused, error, returned, indexPath.row);
-        // if user has not entered any text but is focused show the errors
+        // if user has not entered any text but is focused show the validations
         // if user has entered some text then if they are compliant then dont show any error
-        // otherwise show errors
+        // otherwise show validations
         BOOL updatedNeeded = NO;
         if (input) {
             if (![LightFormViewController isPasswordCompliant:input]) {
-                form[(NSUInteger) indexPath.row][@"errors"] = [LightFormViewController passwordCompliance:input];
+                form[(NSUInteger) indexPath.row][@"validations"] = [LightFormViewController passwordCompliance:input];
             } else {
-                [form[(NSUInteger) indexPath.row] removeObjectForKey:@"errors"];
+                [form[(NSUInteger) indexPath.row] removeObjectForKey:@"validations"];
             }
             updatedNeeded = YES;
         } else {
             if (focused) {
-                form[(NSUInteger) indexPath.row][@"errors"] = [LightFormViewController passwordCompliance:input];
+                form[(NSUInteger) indexPath.row][@"validations"] = [LightFormViewController passwordCompliance:input];
                 updatedNeeded = YES;
             }
         }
         if (returned) {
             form[(NSUInteger) indexPath.row][@"value"] = input;
-            [form[(NSUInteger) indexPath.row] removeObjectForKey:@"errors"];
+            [form[(NSUInteger) indexPath.row] removeObjectForKey:@"validations"];
         }
         if (updatedNeeded) {
             cell.data = [LightFormCellData fromDictionary:form[(NSUInteger) indexPath.row]];
@@ -224,27 +223,23 @@ willDisplayConfirmPasswordCell:(LightFormCell *)cell
              forRowAtIndexPath:(NSIndexPath *)indexPath {
     [cell executeBlock:^(BOOL focused, NSString *input, BOOL error, BOOL returned, BOOL goToNext) {
         NSString *password = form[1][@"value"];
-        NSLog(@"executeBlock %d %d %d for cell at row %tu", focused, error, returned, indexPath.row);
-        // if user has not entered any text but is focused show the errors
-        // if user has entered some text then if they are compliant then dont show any error
-        // otherwise show errors
         BOOL updatedNeeded = NO;
         if (input) {
             if ([LightFormViewController isConfirmPasswordCompliant:input originalPassword:password]) {
-                [form[(NSUInteger) indexPath.row] removeObjectForKey:@"errors"];
+                [form[(NSUInteger) indexPath.row] removeObjectForKey:@"validations"];
             } else {
-                form[(NSUInteger) indexPath.row][@"errors"] = [LightFormViewController confirmPasswordCompliance:input originalPassword:password];
+                form[(NSUInteger) indexPath.row][@"validations"] = [LightFormViewController confirmPasswordCompliance:input originalPassword:password];
             }
             updatedNeeded = YES;
         } else {
             if (focused) {
-                form[(NSUInteger) indexPath.row][@"errors"] = [LightFormViewController passwordCompliance:input];
+                form[(NSUInteger) indexPath.row][@"validations"] = [LightFormViewController passwordCompliance:input];
                 updatedNeeded = YES;
             }
         }
         if (returned) {
             form[(NSUInteger) indexPath.row][@"value"] = input;
-            [form[(NSUInteger) indexPath.row] removeObjectForKey:@"errors"];
+            [form[(NSUInteger) indexPath.row] removeObjectForKey:@"validations"];
         }
         if (updatedNeeded) {
             cell.data = [LightFormCellData fromDictionary:form[(NSUInteger) indexPath.row]];
@@ -261,7 +256,7 @@ willDisplayConfirmPasswordCell:(LightFormCell *)cell
     [mutableArray addObject:[NSMutableDictionary dictionaryWithDictionary:@{
             @"key": @"username",
             @"placeholder": @"Username",
-//            @"accessoryImageUrl": @"email-icon-1.png",
+            @"accessoryImageUrl": @"email-icon-1.png",
             @"hasNext": @(YES)
     }]];
     [mutableArray addObject:[NSMutableDictionary dictionaryWithDictionary:@{
@@ -284,11 +279,6 @@ willDisplayConfirmPasswordCell:(LightFormCell *)cell
 + (NSArray *)passwordCompliance:(NSString *)password {
     NSMutableArray *compliances = [NSMutableArray new];
     NSString *symbolString = @"!@#$%^&*()-+=_";
-    NSCharacterSet *symbol = [NSCharacterSet characterSetWithCharactersInString:symbolString];
-
-    NSCharacterSet *uppercases = [NSCharacterSet uppercaseLetterCharacterSet];
-
-
     if (password) {
         if ([password length] < 8) {
             [compliances addObject:[[NSAttributedString alloc]
@@ -300,7 +290,7 @@ willDisplayConfirmPasswordCell:(LightFormCell *)cell
                         attributes:[self complianceOkStringAttributes]]];
         }
 
-        if ([password rangeOfCharacterFromSet:uppercases].location == NSNotFound) {
+        if ([password rangeOfCharacterFromSet:[NSCharacterSet uppercaseLetterCharacterSet]].location == NSNotFound) {
             [compliances addObject:[[NSAttributedString alloc]
                     initWithString:@"x choose at least one uppercase character"
                         attributes:[self complianceFailureStringAttributes]]];
@@ -310,7 +300,7 @@ willDisplayConfirmPasswordCell:(LightFormCell *)cell
                         attributes:[self complianceOkStringAttributes]]];
         }
 
-        if ([password rangeOfCharacterFromSet:symbol].location == NSNotFound) {
+        if ([password rangeOfCharacterFromSet:[NSCharacterSet characterSetWithCharactersInString:symbolString]].location == NSNotFound) {
             [compliances addObject:[[NSAttributedString alloc]
                     initWithString:[NSString stringWithFormat:@"x use a symobl(%@)", symbolString]
                         attributes:[self complianceFailureStringAttributes]]];
@@ -385,18 +375,25 @@ willDisplayConfirmPasswordCell:(LightFormCell *)cell
 }
 
 
+/**
+ * check whether password has
+ *  - at least 8 characters
+ *  - has at least one lower and one upper case
+ *  - has at least one symbol
+ * @param password
+ * @return
+ */
 + (BOOL)isPasswordCompliant:(NSString *)password {
     NSString *symbolString = @"!@#$%^&*()-+=_";
-    NSCharacterSet *symbol = [NSCharacterSet characterSetWithCharactersInString:symbolString];
-    NSCharacterSet *uppercases = [NSCharacterSet uppercaseLetterCharacterSet];
     return password &&
             [password length] >= 8 &&
-            [password rangeOfCharacterFromSet:symbol].location != NSNotFound &&
-            [password rangeOfCharacterFromSet:uppercases].location != NSNotFound;
+            [password rangeOfCharacterFromSet:
+                    [NSCharacterSet characterSetWithCharactersInString:symbolString]].location != NSNotFound &&
+            [password rangeOfCharacterFromSet:[NSCharacterSet uppercaseLetterCharacterSet]].location != NSNotFound;
 }
 
 + (NSDictionary *)complianceOkStringAttributes {
-    return @{NSForegroundColorAttributeName: [UIColor greenColor],
+    return @{NSForegroundColorAttributeName: [UIColor colorWithRed:0.25 green:0.39 blue:0.13 alpha:1.0],
             NSFontAttributeName: [UIFont fontWithName:@"TrebuchetMS" size:13.0]};
 }
 
@@ -407,7 +404,7 @@ willDisplayConfirmPasswordCell:(LightFormCell *)cell
 }
 
 + (NSDictionary *)complianceFailureStringAttributes {
-    return @{NSForegroundColorAttributeName: [UIColor redColor],
+    return @{NSForegroundColorAttributeName: [UIColor colorWithRed:0.94 green:0.15 blue:0.66 alpha:1.0],
             NSFontAttributeName: [UIFont fontWithName:@"TrebuchetMS" size:13.0]};
 }
 

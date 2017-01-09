@@ -28,8 +28,8 @@
     if (self.value) {
         copy.value = [NSString stringWithString:self.value];
     }
-    if (self.errors) {
-        copy.errors = [NSArray arrayWithArray:self.errors];
+    if (self.validations) {
+        copy.validations = [NSArray arrayWithArray:self.validations];
     }
     copy.hasNext = self.hasNext;
     copy.secureEntry = self.secureEntry;
@@ -38,7 +38,7 @@
 }
 
 /**
- * create LightFromCellData object from the given dictionary
+ * A convinient method to Create LightFromCellData object from the given dictionary
  * dictionary keys accepted include :
  *  - accessoryImageUrl
  *  - placeholder
@@ -58,11 +58,11 @@
         if (dictionary[@"value"]) {
             obj.value = dictionary[@"value"];
         }
-        if (dictionary[@"error"]) {
-            obj.errors = @[dictionary[@"error"]];
+        if (dictionary[@"validation"]) {
+            obj.validations = @[dictionary[@"validation"]];
         }
-        if (dictionary[@"errors"]) {
-            obj.errors = dictionary[@"errors"];
+        if (dictionary[@"validations"]) {
+            obj.validations = dictionary[@"validations"];
         }
         if (dictionary[@"hasNext"]) {
             obj.hasNext = [dictionary[@"hasNext"] boolValue];

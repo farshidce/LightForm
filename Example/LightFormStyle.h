@@ -1,10 +1,6 @@
 #import <Foundation/Foundation.h>
 
 
-
-
-
-
 @protocol LightFormStyle <NSObject>
 
 @required
@@ -13,28 +9,71 @@
 
 @optional
 
+/**
+ * the cell border color
+ */
 @property(nonatomic, retain) UIColor *borderColor;
+
+/*
+ * the cell border color when it is selected
+ */
 @property(nonatomic, retain) UIColor *selectedBorderColor;
+
+/*
+ * the cell border width when it is not selected
+ */
 @property(nonatomic) NSUInteger borderWidth;
+
+/*
+ * the cell border width when it is selected
+ */
 @property(nonatomic) NSUInteger selectedBorderWidth;
+
+/*
+ * the border opacity when cell is not selected
+ */
 @property(nonatomic) float borderOpacity;
+
+/*
+ * the border opacity when cell is selected
+ */
 @property(nonatomic) float selectedBorderOpacity;
-@property(nonatomic, retain) UIColor *errorColor;
-@property(nonatomic, retain) UIFont *errorFont;
+
+/*
+ * the color used for displaying the validation messages
+ */
+@property(nonatomic, retain) UIColor *validationColor;
+
+/*
+ * the font used for displaying the validation messages
+ */
+
+@property(nonatomic, retain) UIFont *validationFont;
+
+/*
+ * the font used for formatting the text input by the user
+ */
 @property(nonatomic, retain) UIFont *titleFont;
+
+/*
+ * the text color for formatting the text input by the user
+ */
+
 @property(nonatomic, retain) UIColor *titleColor;
+
 @property(nonatomic, retain) UIFont *placeholderFont;
 @property(nonatomic, retain) UIColor *placeholderColor;
 @property(nonatomic, retain) UIImage *accessoryImage;
 @property(nonatomic) UIKeyboardType keyboardType;
 @property(nonatomic) UITextAutocorrectionType autocorrectionType;
 @property(nonatomic) UIReturnKeyType returnKeyType;
+@property(nonatomic) UIEdgeInsets contentInsets;
 
 @end
 
 @interface LightFormInternalStyles : NSObject
 
-+(UIColor *)UIColorFromHex:(NSUInteger)rgbValue alpha:(float)alpha;
++ (UIColor *)UIColorFromHex:(NSUInteger)rgbValue alpha:(float)alpha;
 
 + (UIColor *)borderColor;
 
@@ -48,9 +87,9 @@
 
 + (float)selectedBorderOpacity;
 
-+ (UIColor *)errorColor;
++ (UIColor *)validationColor;
 
-+ (UIFont *)errorFont;
++ (UIFont *)validationFont;
 
 + (UIColor *)titleColor;
 
@@ -60,12 +99,13 @@
 
 + (UIFont *)placeholderFont;
 
-
 + (UIKeyboardType)keyboardType;
 
 + (UITextAutocorrectionType)autocorrectionType;
 
 + (UIReturnKeyType)returnKeyType;
+
++ (UIEdgeInsets)contentInsets;
 
 
 @end
@@ -79,8 +119,8 @@
 @property(nonatomic) NSUInteger selectedBorderWidth;
 @property(nonatomic) float borderOpacity;
 @property(nonatomic) float selectedBorderOpacity;
-@property(nonatomic, retain) UIColor *errorColor;
-@property(nonatomic, retain) UIFont *errorFont;
+@property(nonatomic, retain) UIColor *validationColor;
+@property(nonatomic, retain) UIFont *validationFont;
 @property(nonatomic, retain) UIFont *titleFont;
 @property(nonatomic, retain) UIColor *titleColor;
 @property(nonatomic, retain) UIFont *placeholderFont;
@@ -89,6 +129,8 @@
 @property(nonatomic) UIKeyboardType keyboardType;
 @property(nonatomic) UITextAutocorrectionType autocorrectionType;
 @property(nonatomic) UIReturnKeyType returnKeyType;
+@property(nonatomic) UIEdgeInsets contentInsets;
+
 
 @end
 

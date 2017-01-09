@@ -3,16 +3,29 @@
 #import "LightFormCellData.h"
 
 
+CGFloat const kTextFieldLeftMargin = 15.0;
+CGFloat const kTextFieldRightMargin = 15.0;
+CGFloat const kTextFieldTopMargin = 10.0;
+CGFloat const kTextFieldBottomMargin = 5.0;
+CGFloat const kTextFieldHeight = 25.0;
+CGFloat const kErrorLabelMinHeight = 0.0;
+CGFloat const kAccessoryImageRightMargin = 25.0;
+CGFloat const kErrorLabelLeftMargin = 15.0;
+CGFloat const kErrorLabelRightMargin = 15.0;
+CGFloat const kAccessoryImageWidth = 20.0;
+CGFloat const kAccessoryImageHeight = 20.0;
+CGFloat const kAccessoryImageTopMargin = 20.0;
+
 @implementation LightFormCell {
-    void (^executeOnStateChange)(BOOL focused, NSString *input, BOOL error, BOOL returned, BOOL goToNext);
+    void (^executeOnStateChange)(BOOL focused, NSString *input, BOOL validationsLabelVisible, BOOL returned, BOOL goToNext);
 
     UITextField *_inputTextField;
     UIView *_containerView;
-    UILabel *_errorLabel;
+    UILabel *_validationsLabel;
     UIImageView *_accessoryImage;
     LightFormCellData *_data;
     BOOL isTextFieldSelected;
-    BOOL errorVisible;
+    BOOL validationsVisible;
     BOOL placeholderVisible;
 }
 
@@ -30,16 +43,17 @@
                     formStyle:(id <LightFormStyle>)formStyle {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+
         self.style = formStyle;
         isTextFieldSelected = NO;
-        errorVisible = NO;
+        validationsVisible = NO;
         placeholderVisible = YES;
         [self initCellStyle];
         _accessoryImage = [self createAccessoryImageView];
-        _errorLabel = [self createErrorLabel];
+        _validationsLabel = [self createErrorLabel];
         _inputTextField = [self createInputTextField];
         _containerView = [self createContainerViewWith:_inputTextField
-                                            errorLabel:_errorLabel
+                                      validationsLabel:_validationsLabel
                                     accessoryImageView:_accessoryImage];
         [_containerView addConstraints:[self constraintsForTextField]];
         [_containerView addConstraints:[self constraintsForErrorLabel]];
@@ -51,7 +65,6 @@
     // setting the constraint
     return self;
 }
-
 
 - (void)initCellStyle {
     self.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -69,12 +82,12 @@
 }
 
 - (UILabel *)createErrorLabel {
-    UILabel *errorLabel = [[UILabel alloc] init];
-    errorLabel.textAlignment = NSTextAlignmentLeft;
-    [errorLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
-    errorLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    errorLabel.numberOfLines = 0;
-    return errorLabel;
+    UILabel *validationsLabel = [[UILabel alloc] init];
+    validationsLabel.textAlignment = NSTextAlignmentLeft;
+    [validationsLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+    validationsLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    validationsLabel.numberOfLines = 0;
+    return validationsLabel;
 }
 
 - (UIImageView *)createAccessoryImageView {
@@ -88,24 +101,28 @@
 
 
 - (UIView *)createContainerViewWith:(UITextField *)inputTextField
-                         errorLabel:(UILabel *)errorLabel
+                   validationsLabel:(UILabel *)validationsLabel
                  accessoryImageView:(UIImageView *)accessoryImageView {
     UIView *containerView = [[UIView alloc] init];
     [containerView setTranslatesAutoresizingMaskIntoConstraints:NO];
     [containerView addSubview:inputTextField];
-    [containerView addSubview:errorLabel];
+    [containerView addSubview:validationsLabel];
     [containerView addSubview:accessoryImageView];
     return containerView;
 }
 
 
 - (NSArray<NSLayoutConstraint *> *)constraintsForContainerView {
+    NSString *hFormat = [NSString stringWithFormat:@"H:|-%f-[containerView]-%f-|",
+                                                   self.style.contentInsets.left, self.style.contentInsets.right];
     NSArray<NSLayoutConstraint *> *horizontal = [NSLayoutConstraint
-            constraintsWithVisualFormat:@"H:|-15-[containerView]-15-|"
+            constraintsWithVisualFormat:hFormat
                                 options:NSLayoutFormatDirectionLeadingToTrailing metrics:nil
                                   views:@{@"containerView": _containerView}];
+    NSString *vFormat = [NSString stringWithFormat:@"V:|-%f-[containerView]-%f-|",
+                                                   self.style.contentInsets.top, self.style.contentInsets.bottom];
     NSArray<NSLayoutConstraint *> *vertical = [NSLayoutConstraint
-            constraintsWithVisualFormat:@"V:|-7-[containerView]|" //V:|-7-[containerView]-7-|
+            constraintsWithVisualFormat:vFormat
                                 options:NSLayoutFormatDirectionLeadingToTrailing
                                 metrics:nil
                                   views:@{@"containerView": _containerView}];
@@ -113,15 +130,21 @@
 }
 
 - (NSArray<NSLayoutConstraint *> *)constraintsForTextField {
+    NSString *vFormat = [NSString stringWithFormat:
+            @"V:|-%f-[inputTextField(%f)]-%f-[validationsLabel(>=%f)]|",
+            kTextFieldTopMargin, kTextFieldHeight, kTextFieldBottomMargin, kErrorLabelMinHeight];
     NSArray<NSLayoutConstraint *> *vertical = [NSLayoutConstraint
-            constraintsWithVisualFormat:@"V:|-10-[inputTextField(25)]-5-[errorLabel(>=0)]|"
+
+            constraintsWithVisualFormat:vFormat
                                 options:NSLayoutFormatDirectionLeadingToTrailing
                                 metrics:nil
                                   views:@{@"inputTextField": _inputTextField,
-                                          @"errorLabel": _errorLabel}];
+                                          @"validationsLabel": _validationsLabel}];
+    NSString *hFormat = [NSString stringWithFormat:
+            @"H:|-%f-[inputTextField]-%f-[accessoryImage]-%f-|",
+            kTextFieldLeftMargin, kTextFieldRightMargin, kAccessoryImageRightMargin];
     NSArray<NSLayoutConstraint *> *horizontal = [NSLayoutConstraint
-            constraintsWithVisualFormat:@"H:|-15-[inputTextField]-15-[accessoryImage]-25-|"
-//            constraintsWithVisualFormat:@"H:|-15-[inputTextField]-15-|"
+            constraintsWithVisualFormat:hFormat
                                 options:NSLayoutFormatDirectionLeadingToTrailing
                                 metrics:nil
                                   views:@{@"inputTextField": _inputTextField,
@@ -130,13 +153,13 @@
 }
 
 - (NSArray<NSLayoutConstraint *> *)constraintsForErrorLabel {
-
+    NSString *hFormat = [NSString stringWithFormat:@"H:|-%f-[validationsLabel]-%f-[accessoryImage(%f)]-|",
+                                                   kErrorLabelLeftMargin, kErrorLabelRightMargin, kAccessoryImageWidth];
     NSArray<NSLayoutConstraint *> *horizontal = [NSLayoutConstraint
-            constraintsWithVisualFormat:@"H:|-15-[errorLabel]-15-[accessoryImage(20)]-|"
-//            constraintsWithVisualFormat:@"H:|-15-[errorLabel]-15-|"
+            constraintsWithVisualFormat:hFormat
                                 options:NSLayoutFormatDirectionLeadingToTrailing
                                 metrics:nil
-                                  views:@{@"errorLabel": _errorLabel,
+                                  views:@{@"validationsLabel": _validationsLabel,
                                           @"accessoryImage": _accessoryImage}];
     return horizontal;
 
@@ -144,7 +167,8 @@
 
 - (NSArray<NSLayoutConstraint *> *)constraintsForAccessoryImage {
     NSArray<NSLayoutConstraint *> *vertical = [NSLayoutConstraint
-            constraintsWithVisualFormat:@"V:|-20-[accessoryImage(20)]"
+            constraintsWithVisualFormat:[NSString stringWithFormat:@"V:|-%f-[accessoryImage(%f)]",
+                                                                   kAccessoryImageTopMargin, kAccessoryImageHeight]
                                 options:NSLayoutFormatDirectionLeadingToTrailing
                                 metrics:nil
                                   views:@{@"accessoryImage": _accessoryImage}];
@@ -152,7 +176,7 @@
 }
 
 
-- (void)executeBlock:(void (^)(BOOL focused, NSString *input, BOOL error, BOOL returned, BOOL goToNext))onStateChange {
+- (void)executeBlock:(void (^)(BOOL focused, NSString *input, BOOL hasValidationMessages, BOOL returned, BOOL goToNext))onStateChange {
     executeOnStateChange = onStateChange;
 }
 
@@ -164,7 +188,7 @@
 - (void)setCellData:(LightFormCellData *)data {
     _data = data;
     if (_data) {
-        errorVisible = _data.errors && [_data.errors count] > 0;
+        validationsVisible = _data.validations && [_data.validations count] > 0;
     }
     [self refreshView];
 }
@@ -220,24 +244,24 @@
             _containerView.layer.cornerRadius = 5.0;
 
         }
-        if (errorVisible) {
+        if (validationsVisible) {
             NSMutableDictionary *defaultAttributes = [NSMutableDictionary new];
-            if (_style.errorFont) {
-                defaultAttributes[NSFontAttributeName] = _style.errorFont;
+            if (_style.validationFont) {
+                defaultAttributes[NSFontAttributeName] = _style.validationFont;
             }
-            if (_style.errorColor) {
-                defaultAttributes[NSForegroundColorAttributeName] = _style.errorColor;
+            if (_style.validationColor) {
+                defaultAttributes[NSForegroundColorAttributeName] = _style.validationColor;
             }
             NSMutableDictionary *mutableDictionary = [NSMutableDictionary new];
             mutableDictionary[NSForegroundColorAttributeName] = _style.titleColor;
             __block NSUInteger numberOfLines = 0;
             mutableDictionary[NSFontAttributeName] = _style.placeholderFont;
-            if (_data.errors && [_data.errors count] > 0) {
+            if (_data.validations && [_data.validations count] > 0) {
                 NSMutableAttributedString *mutableAttributedString = [[NSMutableAttributedString alloc] init];
-                [_data.errors enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                [_data.validations enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
                     if ([obj isKindOfClass:[NSString class]]) {
                         NSString *line = nil;
-                        if (idx < _data.errors.count - 1) {
+                        if (idx < _data.validations.count - 1) {
                             line = [NSString stringWithFormat:@"%@\n", obj];
                         } else {
                             line = [NSString stringWithFormat:@"%@", obj];
@@ -247,24 +271,22 @@
                                     attributes:[NSDictionary dictionaryWithDictionary:defaultAttributes]]];
                     } else if ([obj isKindOfClass:[NSAttributedString class]]) {
                         [mutableAttributedString appendAttributedString:obj];
-                        if (idx < _data.errors.count - 1) {
+                        if (idx < _data.validations.count - 1) {
                             [mutableAttributedString appendAttributedString:[[NSAttributedString alloc]
                                     initWithString:@"\n" attributes:nil]];
                         }
                     }
                     numberOfLines++;
-//                    _errorLabelHeightConstraint.constant = height;
                 }];
-                _errorLabel.text = nil;
-                _errorLabel.attributedText = mutableAttributedString;
-                [_errorLabel sizeToFit];
+                _validationsLabel.text = nil;
+                _validationsLabel.attributedText = mutableAttributedString;
+                [_validationsLabel sizeToFit];
                 [_containerView sizeToFit];
-//                _errorLabelHeightConstraint.constant = 10;
             }
         } else {
-            _errorLabel.attributedText = nil;
-            _errorLabel.text = nil;
-            [_errorLabel sizeToFit];
+            _validationsLabel.attributedText = nil;
+            _validationsLabel.text = nil;
+            [_validationsLabel sizeToFit];
             [_containerView sizeToFit];
         }
         if (_data.accessoryImageUrl) {
@@ -273,8 +295,8 @@
             _accessoryImage.image = nil;
         }
     } else {
-        _errorLabel.attributedText = nil;
-        _errorLabel.text = nil;
+        _validationsLabel.attributedText = nil;
+        _validationsLabel.text = nil;
         _inputTextField.text = nil;
         _inputTextField.attributedPlaceholder = nil;
         _accessoryImage.image = nil;
@@ -299,7 +321,7 @@
     placeholderVisible = NO;
     isTextFieldSelected = YES;
     if (executeOnStateChange) {
-        executeOnStateChange(isTextFieldSelected, _inputTextField.text, errorVisible, NO, NO);
+        executeOnStateChange(isTextFieldSelected, _inputTextField.text, validationsVisible, NO, NO);
     }
     [self refreshView];
 }
@@ -317,17 +339,29 @@
     [self refreshView];
 }
 
+/**
+ * The textField is not being edited anymore. this function notifies the delegate that
+ *  the textField is out of focus (isTextFieldSelected=NO)
+ *  and the control can transfer to the next textField ( goToNext=YES)
+ *  and keyboard has not returned yet. (returned=NO)
+ * @param textField
+ * @param reason
+ */
 - (void)textFieldDidEndEditing:(UITextField *)textField reason:(UITextFieldDidEndEditingReason)reason NS_AVAILABLE_IOS(10_0) {
     if (!textField.attributedText.string || [textField.attributedText.string length] < 1) {
         placeholderVisible = YES;
     }
     isTextFieldSelected = NO;
     if (executeOnStateChange) {
-        executeOnStateChange(isTextFieldSelected, textField.text, errorVisible, YES, NO);
+        executeOnStateChange(isTextFieldSelected, textField.text, validationsVisible, YES, NO);
     }
     [self refreshView];
 }
 
+/*
+ * The textField is being edited. The delegate needs to be notified that
+ * isTextFieldSelected=YES
+ */
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     NSString *replacementText = [[textField text] stringByReplacingCharactersInRange:range withString:string];
     NSMutableDictionary *mutableDictionary = [NSMutableDictionary new];
@@ -337,7 +371,7 @@
             initWithString:replacementText
                 attributes:[NSDictionary dictionaryWithDictionary:mutableDictionary]];
     if (executeOnStateChange) {
-        executeOnStateChange(isTextFieldSelected, replacementText, errorVisible, NO, NO);
+        executeOnStateChange(isTextFieldSelected, replacementText, validationsVisible, NO, NO);
     }
     return NO;
 }
@@ -350,61 +384,72 @@
     isTextFieldSelected = NO;
     [self refreshView];
     if (executeOnStateChange) {
-        executeOnStateChange(isTextFieldSelected, textField.text, errorVisible, NO, YES);
+        executeOnStateChange(isTextFieldSelected, textField.text, validationsVisible, NO, YES);
     }
     [textField resignFirstResponder];
     return YES;
 }
 
 /*
- * reset the errorLabel size and content
+ * reset the validationsLabel size and content
  */
 - (void)prepareForReuse {
     [super prepareForReuse];
-    _errorLabel.text = nil;
-    _errorLabel.attributedText = nil;
+    _validationsLabel.text = nil;
+    _validationsLabel.attributedText = nil;
     _inputTextField.text = nil;
     _inputTextField.attributedText = nil;
     _inputTextField.attributedPlaceholder = nil;
     _inputTextField.placeholder = nil;
     _accessoryImage.image = nil;
-
 }
 
+
+/**
+ * setting preferredMaxLayoutWidth since _validationsLabel height needs to be recalculated
+ * by the auto layout engine in case validationsLabel is displaying an error
+ */
 - (void)layoutSubviews {
     [super layoutSubviews];
     [self.contentView layoutIfNeeded];
-    _errorLabel.preferredMaxLayoutWidth = _errorLabel.frame.size.width;
+    _validationsLabel.preferredMaxLayoutWidth = _validationsLabel.frame.size.width;
     [super layoutSubviews];
 }
 
 
 - (void)drawRect:(CGRect)rect {
-    CGSize size = _errorLabel.bounds.size;
+    CGSize size = _validationsLabel.bounds.size;
     // tell the label to size itself based on the current width
-    [_errorLabel sizeToFit];
-    if (!CGSizeEqualToSize(size, _errorLabel.bounds.size)) {
+    [_validationsLabel sizeToFit];
+    if (!CGSizeEqualToSize(size, _validationsLabel.bounds.size)) {
         [self setNeedsUpdateConstraints];
         [self updateConstraintsIfNeeded];
     }
     [super drawRect:rect];
 }
 
+/**
+ * calculates the cell height based on the current text and validation messages that is being displayed
+ * @param data
+ * @param style
+ * @return
+ */
 + (CGFloat)cellHeightForData:(LightFormCellData *)data withStyle:(id <LightFormStyle>)style {
     NSStringDrawingContext *context = [[NSStringDrawingContext alloc] init];
     CGSize constraint = CGSizeMake([[UIScreen mainScreen] bounds].size.width, CGFLOAT_MAX);
-    __block CGFloat height = 7.0f + 15.0f + 10.0f + 25.0f + 10.0f;
+    __block CGFloat height = 25.0f + kTextFieldHeight + kTextFieldTopMargin +
+            style.contentInsets.top + style.contentInsets.bottom;
     NSMutableDictionary *defaultAttributes = [NSMutableDictionary new];
-    if (style.errorFont) {
-        defaultAttributes[NSFontAttributeName] = style.errorFont;
+    if (style.validationFont) {
+        defaultAttributes[NSFontAttributeName] = style.validationFont;
     }
-    if (style.errorColor) {
-        defaultAttributes[NSForegroundColorAttributeName] = style.errorColor;
+    if (style.validationColor) {
+        defaultAttributes[NSForegroundColorAttributeName] = style.validationColor;
     }
 
     NSMutableAttributedString *mutableAttributedString = [[NSMutableAttributedString alloc] init];
-    if (data && data.errors) {
-        [data.errors enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+    if (data && data.validations) {
+        [data.validations enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             if ([obj isKindOfClass:[NSString class]]) {
                 [mutableAttributedString appendAttributedString:[[NSAttributedString alloc]
                         initWithString:obj
@@ -421,7 +466,7 @@
                                                                      longestEffectiveRange:nil
                                                                                    inRange:NSMakeRange(0, text.length)];
                 [mutableAttributedString appendAttributedString:obj];
-                if (idx < data.errors.count - 1) {
+                if (idx < data.validations.count - 1) {
                     [mutableAttributedString appendAttributedString:[[NSAttributedString alloc]
                             initWithString:@"\n" attributes:nil]];
                 }

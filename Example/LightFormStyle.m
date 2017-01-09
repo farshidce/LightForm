@@ -41,11 +41,11 @@
     return 1.0;
 }
 
-+ (UIColor *)errorColor {
++ (UIColor *)validationColor {
     return [UIColor redColor];
 }
 
-+ (UIFont *)errorFont {
++ (UIFont *)validationFont {
     return [UIFont fontWithName:@"TrebuchetMS" size:12.0];
 }
 
@@ -80,6 +80,10 @@
 }
 
 
++ (UIEdgeInsets)contentInsets {
+    return UIEdgeInsetsMake(7.0, 15.0, 0.0, 15.0);
+}
+
 @end
 
 @implementation LightFormDefaultStyle {
@@ -98,13 +102,14 @@
         self.selectedBorderOpacity = [LightFormInternalStyles selectedBorderOpacity];
         self.titleColor = [LightFormInternalStyles titleColor];
         self.titleFont = [LightFormInternalStyles titleFont];
-        self.errorColor = [LightFormInternalStyles errorColor];
-        self.errorFont = [LightFormInternalStyles errorFont];
+        self.validationColor = [LightFormInternalStyles validationColor];
+        self.validationFont = [LightFormInternalStyles validationFont];
         self.placeholderFont = [LightFormInternalStyles placeholderFont];
         self.placeholderColor = [LightFormInternalStyles placeholderColor];
         self.keyboardType = [LightFormInternalStyles keyboardType];
         self.autocorrectionType = [LightFormInternalStyles autocorrectionType];
         self.returnKeyType = [LightFormInternalStyles returnKeyType];
+        self.contentInsets = [LightFormInternalStyles contentInsets];
         self.title = @"";
     }
     return self;
