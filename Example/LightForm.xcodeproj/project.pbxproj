@@ -23,9 +23,6 @@
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 		9729CACF81745D714DCBA1D9 /* Pods_LightForm_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B230C67B2E4004BF914CC50 /* Pods_LightForm_Example.framework */; };
 		E8B8BDF21DFA25920001BA8D /* LightFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8B8BDF11DFA25920001BA8D /* LightFormViewController.m */; };
-		E8FC3B731DF946E200B20A59 /* LightFormCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E8FC3B6D1DF946E200B20A59 /* LightFormCell.m */; };
-		E8FC3B741DF946E200B20A59 /* LightFormCellData.m in Sources */ = {isa = PBXBuildFile; fileRef = E8FC3B6F1DF946E200B20A59 /* LightFormCellData.m */; };
-		E8FC3B751DF946E200B20A59 /* LightFormStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = E8FC3B711DF946E200B20A59 /* LightFormStyle.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,12 +64,6 @@
 		B0A4EB16F6AD44C668E8F0B9 /* Pods-LightForm_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LightForm_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LightForm_Example/Pods-LightForm_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		E8B8BDF01DFA25920001BA8D /* LightFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LightFormViewController.h; sourceTree = "<group>"; };
 		E8B8BDF11DFA25920001BA8D /* LightFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LightFormViewController.m; sourceTree = "<group>"; };
-		E8FC3B6C1DF946E200B20A59 /* LightFormCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LightFormCell.h; sourceTree = "<group>"; };
-		E8FC3B6D1DF946E200B20A59 /* LightFormCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LightFormCell.m; sourceTree = "<group>"; };
-		E8FC3B6E1DF946E200B20A59 /* LightFormCellData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LightFormCellData.h; sourceTree = "<group>"; };
-		E8FC3B6F1DF946E200B20A59 /* LightFormCellData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LightFormCellData.m; sourceTree = "<group>"; };
-		E8FC3B701DF946E200B20A59 /* LightFormStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LightFormStyle.h; sourceTree = "<group>"; };
-		E8FC3B711DF946E200B20A59 /* LightFormStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LightFormStyle.m; sourceTree = "<group>"; };
 		FCB7260C40D9DE084219CC88 /* Pods-LightForm_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LightForm_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-LightForm_Example/Pods-LightForm_Example.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -206,12 +197,6 @@
 		E8FC3B6B1DF9466D00B20A59 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				E8FC3B6C1DF946E200B20A59 /* LightFormCell.h */,
-				E8FC3B6D1DF946E200B20A59 /* LightFormCell.m */,
-				E8FC3B6E1DF946E200B20A59 /* LightFormCellData.h */,
-				E8FC3B6F1DF946E200B20A59 /* LightFormCellData.m */,
-				E8FC3B701DF946E200B20A59 /* LightFormStyle.h */,
-				E8FC3B711DF946E200B20A59 /* LightFormStyle.m */,
 			);
 			name = Sources;
 			sourceTree = "<group>";
@@ -413,12 +398,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E8FC3B751DF946E200B20A59 /* LightFormStyle.m in Sources */,
 				6003F59E195388D20070C39A /* LightFormAppDelegate.m in Sources */,
-				E8FC3B731DF946E200B20A59 /* LightFormCell.m in Sources */,
 				E8B8BDF21DFA25920001BA8D /* LightFormViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
-				E8FC3B741DF946E200B20A59 /* LightFormCellData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

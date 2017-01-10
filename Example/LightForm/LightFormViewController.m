@@ -7,9 +7,7 @@
 //
 
 #import "LightFormViewController.h"
-#import "LightFormCell.h"
-#import "LightFormCellData.h"
-#import "LightFormStyle.h"
+#import "LightForm.h"
 
 @interface LightFormViewController ()
 
