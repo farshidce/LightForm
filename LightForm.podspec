@@ -40,6 +40,6 @@ The caller can customize the font, color, border and placement of the contents i
   #   'LightForm' => ['LightForm/Assets/*.png']
   # }
 
-  s.public_header_files = 'LightForm/Classes/LightForm.h'
+  s.public_header_files = 'LightForm/Classes/*.h'
   s.frameworks = 'UIKit'
 end
