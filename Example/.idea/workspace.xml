@@ -132,6 +132,7 @@
                   <marker date="1484006584000" expanded="true" signature="2798:3459" ph="^(BOOL focused, NSString *input, BOOL error, BOOL returned, BOOL goToNext){...}" />
                   <marker date="1484006584000" expanded="true" signature="2798:3462" ph="^(BOOL focused, NSString *input, BOOL error, BOOL returned, BOOL goToNext){...}" />
                   <marker date="1484006584000" expanded="true" signature="3667:3908" ph="^(BOOL focused, NSString *input, BOOL error, BOOL returned, BOOL goToNext){...}" />
+                  <marker date="1484006584000" expanded="true" signature="4013:4271" ph="^(BOOL focused, NSString *input, BOOL error, BOOL returned, BOOL goToNext){...}" />
                 </folding>
               </first_editor>
               <second_editor />
@@ -451,12 +452,12 @@
       <workItem from="1483864149593" duration="70000" />
       <workItem from="1483989202888" duration="11181000" />
       <workItem from="1484003614074" duration="809000" />
-      <workItem from="1484004463137" duration="2133000" />
+      <workItem from="1484004463137" duration="2244000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66895000" />
+    <option name="totallyTimeSpent" value="67006000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="23" y="46" width="1397" height="829" extended-state="0" />
@@ -751,6 +752,7 @@
               <marker date="1484006584000" expanded="true" signature="2798:3459" ph="^(BOOL focused, NSString *input, BOOL error, BOOL returned, BOOL goToNext){...}" />
               <marker date="1484006584000" expanded="true" signature="2798:3462" ph="^(BOOL focused, NSString *input, BOOL error, BOOL returned, BOOL goToNext){...}" />
               <marker date="1484006584000" expanded="true" signature="3667:3908" ph="^(BOOL focused, NSString *input, BOOL error, BOOL returned, BOOL goToNext){...}" />
+              <marker date="1484006584000" expanded="true" signature="4013:4271" ph="^(BOOL focused, NSString *input, BOOL error, BOOL returned, BOOL goToNext){...}" />
             </folding>
           </first_editor>
           <second_editor />

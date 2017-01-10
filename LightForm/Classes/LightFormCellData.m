@@ -3,7 +3,7 @@
 // Copyright (c) 2016 Farshid Ghods. All rights reserved.
 //
 
-#import "LightFormCellData.h"
+#import "LightForm.h"
 
 
 @implementation LightFormCellData {
@@ -28,12 +28,17 @@
     if (self.value) {
         copy.value = [NSString stringWithString:self.value];
     }
+    if (self.validations) {
+        copy.validations = [NSArray arrayWithArray:self.validations];
+    }
+    copy.hasNext = self.hasNext;
+    copy.secureEntry = self.secureEntry;
     return copy;
 
 }
 
 /**
- * create LightFromCellData object from the given dictionary
+ * A convinient method to Create LightFromCellData object from the given dictionary
  * dictionary keys accepted include :
  *  - accessoryImageUrl
  *  - placeholder
@@ -45,7 +50,7 @@
     LightFormCellData *obj = [[LightFormCellData alloc] init];
     if (dictionary) {
         if (dictionary[@"accessoryImageUrl"]) {
-            obj.accessoryImageUrl;
+            obj.accessoryImageUrl = dictionary[@"accessoryImageUrl"];
         }
         if (dictionary[@"placeholder"]) {
             obj.placeholder = dictionary[@"placeholder"];
@@ -53,12 +58,24 @@
         if (dictionary[@"value"]) {
             obj.value = dictionary[@"value"];
         }
-        if (dictionary[@"error"]) {
-            obj.error = dictionary[@"error"];
+        if (dictionary[@"validation"]) {
+            obj.validations = @[dictionary[@"validation"]];
+        }
+        if (dictionary[@"validations"]) {
+            obj.validations = dictionary[@"validations"];
+        }
+        if (dictionary[@"hasNext"]) {
+            obj.hasNext = [dictionary[@"hasNext"] boolValue];
+        } else {
+            obj.hasNext = NO;
+        }
+        if (dictionary[@"secureEntry"]) {
+            obj.secureEntry = [dictionary[@"secureEntry"] boolValue];
+        } else {
+            obj.secureEntry = NO;
         }
     }
     return obj;
 }
-
 
 @end
