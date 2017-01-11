@@ -1,9 +1,0 @@
-<component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="LightForm-Example" type="AppleRunConfiguration" factoryName="Application" WORKING_DIR="" PASS_PARENT_ENVS_2="true" PROJECT_NAME="LightForm" TARGET_NAME="LightForm_Example" CONFIG_NAME="Debug" SCHEME_NAME="LightForm-Example" RUN_TARGET_PROJECT_NAME="LightForm" RUN_TARGET_NAME="LightForm_Example" MAKE_ACTIVE="TRUE">
-    <envs />
-    <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
-      <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
-    </EXTENSION>
-    <method />
-  </configuration>
-</component>
