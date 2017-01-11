@@ -7,6 +7,9 @@
 ## LightForm
 Simple interactive and customizable library to handle form input and validations.
 
+
+![demo](https://s3.amazonaws.com/farshid.ghods.github/lightform-1.gif)
+
 A simple library which let the user create beautiful and interactive forms for
 handling user inputs and validating the data as the user inputs. The library
 notifies the caller if and when the user changes the input and let the caller
