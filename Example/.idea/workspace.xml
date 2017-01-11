@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ba7c5201-9205-4c19-959e-d5e58040bf3f" name="Default" comment="" />
+    <list default="true" id="ba7c5201-9205-4c19-959e-d5e58040bf3f" name="Default" comment="simplified">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../.gitignore" afterPath="$PROJECT_DIR$/../.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LightForm/LightFormViewController.m" afterPath="$PROJECT_DIR$/LightForm/LightFormViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../LightForm/Classes/LightFormCell.h" afterPath="$PROJECT_DIR$/../LightForm/Classes/LightFormCell.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../LightForm/Classes/LightFormCell.m" afterPath="$PROJECT_DIR$/../LightForm/Classes/LightFormCell.m" />
+    </list>
     <ignored path="$USER_HOME$/Library/Caches/AppCode2016.3/DerivedData/LightForm-bmoqgkvymlsbweebagajsddkibhk/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -13,89 +19,42 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
-  <component name="DockManager">
-    <window id="3">
-      <content type="file-editors">
-        <state>
-          <leaf>
-            <file leaf-file-name="LightFormViewController.m" pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/LightForm/LightFormViewController.m">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="254">
-                    <caret line="209" column="0" lean-forward="false" selection-start-line="207" selection-start-column="0" selection-end-line="209" selection-end-column="0" />
-                    <folding />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-  </component>
   <component name="ErrorTreeViewConfiguration">
     <option name="hideWarnings" value="true" />
     <option name="HIDE_WARNINGS" value="true" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="iphonesimulatoriPhone_6s_10.2_x86_64_1" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="iphoneos_2b577075c5835bcbc4294c6305188fb596f3aab0" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="LightFormViewController.m" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/LightForm/LightFormViewController.m">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="104">
+              <caret line="353" column="29" lean-forward="true" selection-start-line="353" selection-start-column="29" selection-end-line="353" selection-end-column="29" />
+              <folding>
+                <element signature="e#152#191#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="LightForm.podspec" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../LightForm.podspec">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="360">
-              <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+              <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LightFormCell.m" pinned="false" current-in-tab="false">
+      <file leaf-file-name="LightFormCell.m" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../LightForm/Classes/LightFormCell.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="14" lean-forward="false" selection-start-line="0" selection-start-column="14" selection-end-line="0" selection-end-column="14" />
+            <state relative-caret-position="194">
+              <caret line="371" column="28" lean-forward="false" selection-start-line="371" selection-start-column="8" selection-end-line="371" selection-end-column="28" />
               <folding>
-                <marker date="1484005271000" expanded="true" signature="8:21" ph="..." />
-                <marker date="1484005271000" expanded="true" signature="580:20736" ph="..." />
-                <marker date="1484005271000" expanded="true" signature="581:956" ph="{...}" />
-                <marker date="1484005271000" expanded="true" signature="1075:1232" ph="{...}" />
-                <marker date="1484005271000" expanded="true" signature="1412:2459" ph="{...}" />
-                <marker date="1484005271000" expanded="true" signature="2483:2547" ph="{...}" />
-                <marker date="1484005271000" expanded="true" signature="2588:2978" ph="{...}" />
-                <marker date="1484005271000" expanded="true" signature="3010:3332" ph="{...}" />
-                <marker date="1484005271000" expanded="true" signature="3376:3633" ph="{...}" />
-                <marker date="1484005271000" expanded="true" signature="3836:4132" ph="{...}" />
-                <marker date="1484005271000" expanded="true" signature="4647:4682" ph="@{...}" />
-                <marker date="1484005271000" expanded="true" signature="5162:5197" ph="@{...}" />
-                <marker date="1484005271000" expanded="true" signature="5831:5950" ph="@{...}" />
-                <marker date="1484005271000" expanded="true" signature="6437:6552" ph="@{...}" />
-                <marker date="1484005271000" expanded="true" signature="7193:7312" ph="@{...}" />
-                <marker date="1484005271000" expanded="true" signature="7854:7891" ph="@{...}" />
-                <marker date="1484005271000" expanded="true" signature="8053:8098" ph="{...}" />
-                <marker date="1484005271000" expanded="true" signature="8100:8152" ph="/**...*/" />
-                <marker date="1484005271000" expanded="true" signature="8199:8348" ph="{...}" />
-                <marker date="1484005271000" expanded="true" signature="8370:13576" ph="{...}" />
-                <marker date="1484005271000" expanded="true" signature="11464:12655" ph="^(id obj, NSUInteger idx, BOOL *stop){...}" />
-                <marker date="1484005271000" expanded="true" signature="13665:13837" ph="{...}" />
-                <marker date="1484005271000" expanded="true" signature="13897:14123" ph="{...}" />
-                <marker date="1484005271000" expanded="true" signature="14184:14241" ph="{...}" />
-                <marker date="1484005271000" expanded="true" signature="14299:14488" ph="{...}" />
-                <marker date="1484005271000" expanded="true" signature="14490:14804" ph="/**...*/" />
-                <marker date="1484005271000" expanded="true" signature="14930:15253" ph="{...}" />
-                <marker date="1484005271000" expanded="true" signature="15255:15361" ph="/.../" />
-                <marker date="1484005271000" expanded="true" signature="15487:16161" ph="{...}" />
-                <marker date="1484005271000" expanded="true" signature="16217:16236" ph="{...}" />
-                <marker date="1484005271000" expanded="true" signature="16293:16538" ph="{...}" />
-                <marker date="1484005271000" expanded="true" signature="16540:16593" ph="/.../" />
-                <marker date="1484005271000" expanded="true" signature="16618:16923" ph="{...}" />
-                <marker date="1484005271000" expanded="true" signature="16926:17101" ph="/**...*/" />
-                <marker date="1484005271000" expanded="true" signature="17125:17307" ph="{...}" />
-                <marker date="1484005271000" expanded="true" signature="17340:17675" ph="{...}" />
-                <marker date="1484005271000" expanded="true" signature="17677:17830" ph="/**...*/" />
-                <marker date="1484005271000" expanded="true" signature="17923:20606" ph="{...}" />
-                <marker date="1484005271000" expanded="true" signature="18730:20577" ph="^(id obj, NSUInteger idx, BOOL *stop){...}" />
-                <marker date="1484005271000" expanded="true" signature="20637:20734" ph="{...}" />
+                <marker date="1484099438000" expanded="true" signature="8:21" ph="..." />
               </folding>
             </state>
           </provider>
@@ -104,8 +63,8 @@
       <file leaf-file-name="LightFormCell.h" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../LightForm/Classes/LightFormCell.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="284">
+              <caret line="41" column="87" lean-forward="false" selection-start-line="41" selection-start-column="87" selection-end-line="41" selection-end-column="87" />
               <folding />
             </state>
           </provider>
@@ -114,19 +73,19 @@
       <file leaf-file-name="UITextField.h" pinned="false" current-in-tab="false">
         <entry file="file:///Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITextField.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="639">
+            <state relative-caret-position="900">
               <caret line="60" column="62" lean-forward="false" selection-start-line="60" selection-start-column="62" selection-end-line="60" selection-end-column="62" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="-485">
-                <caret line="66" column="61" lean-forward="true" selection-start-line="66" selection-start-column="61" selection-end-line="66" selection-end-column="61" />
+              <first_editor relative-caret-position="328">
+                <caret line="118" column="0" lean-forward="true" selection-start-line="118" selection-start-column="0" selection-end-line="118" selection-end-column="0" />
                 <folding>
                   <marker date="1484006584000" expanded="true" signature="2592:2677" ph="@{...}" />
                   <marker date="1484006584000" expanded="true" signature="2798:3459" ph="^(BOOL focused, NSString *input, BOOL error, BOOL returned, BOOL goToNext){...}" />
@@ -136,6 +95,16 @@
                 </folding>
               </first_editor>
               <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LightFormCellData.m" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../LightForm/Classes/LightFormCellData.m">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="140">
+              <caret line="23" column="5" lean-forward="true" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -154,42 +123,45 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>&quot;hasNext&quot;</find>
-      <find>createFormData</find>
-      <find>onStateChange</find>
-      <find>goToNext</find>
-      <find>self.goto</find>
-      <find>hasNex</find>
-      <find>executeOnStateChange</find>
-      <find>keub</find>
-      <find>height</find>
-      <find>.</find>
-      <find>style</find>
-      <find>errorL:</find>
-      <find>valida</find>
-      <find>errors</find>
-      <find>&quot;error</find>
-      <find>_errorLabel</find>
-      <find>validation</find>
       <find>errorerror</find>
       <find>error =</find>
       <find>errorLa</find>
       <find>errorLabel</find>
       <find>errorLabe</find>
-      <find>executeBlock</find>
       <find>_error</find>
-      <find>error</find>
       <find>isUsernameCompliant</find>
       <find>RKMultiUnitRuler</find>
       <find>formDat</find>
       <find>form</find>
       <find>willDispl</find>
+      <find>onSta</find>
+      <find>on</find>
+      <find>&quot;validation</find>
+      <find>&quot;validat</find>
+      <find>executeOnSt</find>
+      <find>has</find>
+      <find>error</find>
+      <find>validationVisibl</find>
+      <find>validationsV</find>
+      <find>executeBlock</find>
+      <find>YES)</find>
+      <find>validationsVisible,</find>
+      <find>BOOL error,</find>
+      <find>hasN</find>
+      <find>goToNext</find>
+      <find>goT</find>
+      <find>executeOnStateChange</find>
+      <find>update</find>
+      <find>data.vali</find>
     </findStrings>
     <replaceStrings>
       <replace>_validationsLabel</replace>
       <replace>validationsLabel</replace>
       <replace>LightForm</replace>
     </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -202,8 +174,10 @@
         <option value="$PROJECT_DIR$/LightFormStyle.h" />
         <option value="$PROJECT_DIR$/LightForm/LightFormViewController.h" />
         <option value="$PROJECT_DIR$/../LightForm/Classes/LightForm.h" />
-        <option value="$PROJECT_DIR$/LightForm/LightFormViewController.m" />
         <option value="$PROJECT_DIR$/../README.md" />
+        <option value="$PROJECT_DIR$/../LightForm/Classes/LightFormCell.h" />
+        <option value="$PROJECT_DIR$/../LightForm/Classes/LightFormCell.m" />
+        <option value="$PROJECT_DIR$/LightForm/LightFormViewController.m" />
       </list>
     </option>
   </component>
@@ -220,6 +194,7 @@
     <option name="width" value="1397" />
     <option name="height" value="829" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator currentView="Cidr.FilesView" proportions="" version="1">
       <flattenPackages />
@@ -235,30 +210,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Cidr.FilesView">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LightForm" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Frameworks" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeFrameworksVirtualNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LightForm" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LightForm" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -375,6 +326,30 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Cidr.FilesView">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LightForm" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Frameworks" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeFrameworksVirtualNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LightForm" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LightForm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -452,12 +427,13 @@
       <workItem from="1483864149593" duration="70000" />
       <workItem from="1483989202888" duration="11181000" />
       <workItem from="1484003614074" duration="809000" />
-      <workItem from="1484004463137" duration="2244000" />
+      <workItem from="1484004463137" duration="5010000" />
+      <workItem from="1484098782809" duration="2035000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="67006000" />
+    <option name="totallyTimeSpent" value="71807000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="23" y="46" width="1397" height="829" extended-state="0" />
@@ -469,8 +445,8 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35302392" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32911393" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32911393" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32911393" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23619185" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4212121" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -497,12 +473,13 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/LightFormCellData.m" />
     <entry file="file://$PROJECT_DIR$/LightForm/LightFormViewController.m">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="28" column="47" lean-forward="false" selection-start-line="28" selection-start-column="47" selection-end-line="28" selection-end-column="47" />
-          <folding />
+          <folding>
+            <element signature="e#152#191#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -521,7 +498,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="765">
           <caret line="51" column="5" lean-forward="false" selection-start-line="51" selection-start-column="5" selection-end-line="51" selection-end-column="5" />
-          <folding />
+          <folding>
+            <element signature="e#152#191#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -540,7 +519,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="765">
           <caret line="51" column="5" lean-forward="false" selection-start-line="51" selection-start-column="5" selection-end-line="51" selection-end-column="5" />
-          <folding />
+          <folding>
+            <element signature="e#152#191#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -554,7 +535,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#152#191#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -635,74 +618,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../LightForm/Classes/LightFormCell.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="14" lean-forward="false" selection-start-line="0" selection-start-column="14" selection-end-line="0" selection-end-column="14" />
-          <folding>
-            <marker date="1484005271000" expanded="true" signature="8:21" ph="..." />
-            <marker date="1484005271000" expanded="true" signature="580:20736" ph="..." />
-            <marker date="1484005271000" expanded="true" signature="581:956" ph="{...}" />
-            <marker date="1484005271000" expanded="true" signature="1075:1232" ph="{...}" />
-            <marker date="1484005271000" expanded="true" signature="1412:2459" ph="{...}" />
-            <marker date="1484005271000" expanded="true" signature="2483:2547" ph="{...}" />
-            <marker date="1484005271000" expanded="true" signature="2588:2978" ph="{...}" />
-            <marker date="1484005271000" expanded="true" signature="3010:3332" ph="{...}" />
-            <marker date="1484005271000" expanded="true" signature="3376:3633" ph="{...}" />
-            <marker date="1484005271000" expanded="true" signature="3836:4132" ph="{...}" />
-            <marker date="1484005271000" expanded="true" signature="4647:4682" ph="@{...}" />
-            <marker date="1484005271000" expanded="true" signature="5162:5197" ph="@{...}" />
-            <marker date="1484005271000" expanded="true" signature="5831:5950" ph="@{...}" />
-            <marker date="1484005271000" expanded="true" signature="6437:6552" ph="@{...}" />
-            <marker date="1484005271000" expanded="true" signature="7193:7312" ph="@{...}" />
-            <marker date="1484005271000" expanded="true" signature="7854:7891" ph="@{...}" />
-            <marker date="1484005271000" expanded="true" signature="8053:8098" ph="{...}" />
-            <marker date="1484005271000" expanded="true" signature="8100:8152" ph="/**...*/" />
-            <marker date="1484005271000" expanded="true" signature="8199:8348" ph="{...}" />
-            <marker date="1484005271000" expanded="true" signature="8370:13576" ph="{...}" />
-            <marker date="1484005271000" expanded="true" signature="11464:12655" ph="^(id obj, NSUInteger idx, BOOL *stop){...}" />
-            <marker date="1484005271000" expanded="true" signature="13665:13837" ph="{...}" />
-            <marker date="1484005271000" expanded="true" signature="13897:14123" ph="{...}" />
-            <marker date="1484005271000" expanded="true" signature="14184:14241" ph="{...}" />
-            <marker date="1484005271000" expanded="true" signature="14299:14488" ph="{...}" />
-            <marker date="1484005271000" expanded="true" signature="14490:14804" ph="/**...*/" />
-            <marker date="1484005271000" expanded="true" signature="14930:15253" ph="{...}" />
-            <marker date="1484005271000" expanded="true" signature="15255:15361" ph="/.../" />
-            <marker date="1484005271000" expanded="true" signature="15487:16161" ph="{...}" />
-            <marker date="1484005271000" expanded="true" signature="16217:16236" ph="{...}" />
-            <marker date="1484005271000" expanded="true" signature="16293:16538" ph="{...}" />
-            <marker date="1484005271000" expanded="true" signature="16540:16593" ph="/.../" />
-            <marker date="1484005271000" expanded="true" signature="16618:16923" ph="{...}" />
-            <marker date="1484005271000" expanded="true" signature="16926:17101" ph="/**...*/" />
-            <marker date="1484005271000" expanded="true" signature="17125:17307" ph="{...}" />
-            <marker date="1484005271000" expanded="true" signature="17340:17675" ph="{...}" />
-            <marker date="1484005271000" expanded="true" signature="17677:17830" ph="/**...*/" />
-            <marker date="1484005271000" expanded="true" signature="17923:20606" ph="{...}" />
-            <marker date="1484005271000" expanded="true" signature="18730:20577" ph="^(id obj, NSUInteger idx, BOOL *stop){...}" />
-            <marker date="1484005271000" expanded="true" signature="20637:20734" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../LightForm/Classes/LightFormCell.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../LightForm/Classes/ReplaceMe.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../LightForm/Classes/ReplaceMe.m" />
     <entry file="file:///Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITextField.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="639">
+        <state relative-caret-position="900">
           <caret line="60" column="62" lean-forward="false" selection-start-line="60" selection-start-column="62" selection-end-line="60" selection-end-column="62" />
           <folding />
         </state>
@@ -718,14 +637,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../LightForm.podspec">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/LightForm/LightFormViewController.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -734,19 +645,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/LightForm/LightFormViewController.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="209" column="0" lean-forward="false" selection-start-line="207" selection-start-column="0" selection-end-line="209" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="-485">
-            <caret line="66" column="61" lean-forward="true" selection-start-line="66" selection-start-column="61" selection-end-line="66" selection-end-column="61" />
+          <first_editor relative-caret-position="328">
+            <caret line="118" column="0" lean-forward="true" selection-start-line="118" selection-start-column="0" selection-end-line="118" selection-end-column="0" />
             <folding>
               <marker date="1484006584000" expanded="true" signature="2592:2677" ph="@{...}" />
               <marker date="1484006584000" expanded="true" signature="2798:3459" ph="^(BOOL focused, NSString *input, BOOL error, BOOL returned, BOOL goToNext){...}" />
@@ -756,6 +659,50 @@
             </folding>
           </first_editor>
           <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../LightForm/Classes/LightFormCell.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="41" column="87" lean-forward="false" selection-start-line="41" selection-start-column="87" selection-end-line="41" selection-end-column="87" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../LightForm/Classes/LightFormCellData.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="23" column="5" lean-forward="true" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LightForm/LightFormViewController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="353" column="29" lean-forward="true" selection-start-line="353" selection-start-column="29" selection-end-line="353" selection-end-column="29" />
+          <folding>
+            <element signature="e#152#191#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../LightForm.podspec">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../LightForm/Classes/LightFormCell.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="371" column="28" lean-forward="false" selection-start-line="371" selection-start-column="8" selection-end-line="371" selection-end-column="28" />
+          <folding>
+            <marker date="1484099438000" expanded="true" signature="8:21" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>

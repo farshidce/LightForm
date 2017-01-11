@@ -15,7 +15,7 @@ CGFloat const kAccessoryImageHeight = 20.0;
 CGFloat const kAccessoryImageTopMargin = 20.0;
 
 @implementation LightFormCell {
-    void (^executeOnStateChange)(BOOL focused, NSString *input, BOOL validationsLabelVisible, BOOL returned, BOOL goToNext);
+    void (^executeOnStateChange)(LightFormCellData *data, BOOL focused, NSString *input, BOOL returned, BOOL goToNext);
 
     UITextField *_inputTextField;
     UIView *_containerView;
@@ -174,7 +174,7 @@ CGFloat const kAccessoryImageTopMargin = 20.0;
 }
 
 
-- (void)executeBlock:(void (^)(BOOL focused, NSString *input, BOOL hasValidationMessages, BOOL returned, BOOL goToNext))onStateChange {
+- (void)executeBlock:(void (^)(LightFormCellData *data, BOOL focused, NSString *input, BOOL returned, BOOL goToNext))onStateChange {
     executeOnStateChange = onStateChange;
 }
 
@@ -319,7 +319,7 @@ CGFloat const kAccessoryImageTopMargin = 20.0;
     placeholderVisible = NO;
     isTextFieldSelected = YES;
     if (executeOnStateChange) {
-        executeOnStateChange(isTextFieldSelected, _inputTextField.text, validationsVisible, NO, NO);
+        executeOnStateChange(_data, isTextFieldSelected, _inputTextField.text, NO, NO);
     }
     [self refreshView];
 }
@@ -351,7 +351,7 @@ CGFloat const kAccessoryImageTopMargin = 20.0;
     }
     isTextFieldSelected = NO;
     if (executeOnStateChange) {
-        executeOnStateChange(isTextFieldSelected, textField.text, validationsVisible, YES, NO);
+        executeOnStateChange(_data, isTextFieldSelected, textField.text, YES, NO);
     }
     [self refreshView];
 }
@@ -369,7 +369,7 @@ CGFloat const kAccessoryImageTopMargin = 20.0;
             initWithString:replacementText
                 attributes:[NSDictionary dictionaryWithDictionary:mutableDictionary]];
     if (executeOnStateChange) {
-        executeOnStateChange(isTextFieldSelected, replacementText, validationsVisible, NO, NO);
+        executeOnStateChange(_data, isTextFieldSelected, replacementText, NO, NO);
     }
     return NO;
 }
@@ -382,7 +382,7 @@ CGFloat const kAccessoryImageTopMargin = 20.0;
     isTextFieldSelected = NO;
     [self refreshView];
     if (executeOnStateChange) {
-        executeOnStateChange(isTextFieldSelected, textField.text, validationsVisible, NO, YES);
+        executeOnStateChange(_data, isTextFieldSelected, textField.text, NO, YES);
     }
     [textField resignFirstResponder];
     return YES;

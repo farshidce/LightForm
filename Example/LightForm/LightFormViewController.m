@@ -6,8 +6,10 @@
 //  Copyright © 2016 Farshid Ghods. All rights reserved.
 //
 
+#import <LightForm/LightFormCellData.h>
+#import <LightForm/LightFormCell.h>
+#import <LightForm/LightForm.h>
 #import "LightFormViewController.h"
-#import "LightForm.h"
 
 @interface LightFormViewController ()
 
@@ -144,34 +146,25 @@ willDisplayConfirmPasswordCell:lightFormCell
 - (void)      tableView:(UITableView *)tableView
 willDisplayUsernameCell:(LightFormCell *)cell
       forRowAtIndexPath:(NSIndexPath *)indexPath {
-    [cell executeBlock:^(BOOL focused, NSString *input, BOOL validationsLabelVisible, BOOL returned, BOOL goToNext) {
-        NSLog(@"executeBlock %d %d %d for cell at row %tu", focused, validationsLabelVisible, returned, indexPath.row);
+    [cell executeBlock:^(LightFormCellData *data, BOOL focused, NSString *input, BOOL returned, BOOL goToNext) {
+        NSLog(@"executeBlock %d %d for cell at row %tu", focused, returned, indexPath.row);
         // if user has not entered any text but is focused show the validations
         // if user has entered some text then if they are compliant then dont show any of the validations
-        BOOL updatedNeeded = NO;
+        BOOL updateNeeded = input != nil || focused;
         if (input) {
-            if (![LightFormViewController isUsernameCompliant:input]) {
-                form[(NSUInteger) indexPath.row][@"validations"] = [LightFormViewController usernameCompliance:input];
-            } else {
-                [form[(NSUInteger) indexPath.row] removeObjectForKey:@"validations"];
-            }
-            updatedNeeded = YES;
-        } else {
-            if (focused) {
-                form[(NSUInteger) indexPath.row][@"validations"] = [LightFormViewController usernameCompliance:input];
-                updatedNeeded = YES;
-            }
+            data.validations = [LightFormViewController isUsernameCompliant:input] ? nil : [LightFormViewController usernameCompliance:input];
+        } else if (focused) {
+            data.validations = [LightFormViewController usernameCompliance:input];
         }
         if (returned) {
-            form[(NSUInteger) indexPath.row][@"value"] = input;
-            [form[(NSUInteger) indexPath.row] removeObjectForKey:@"validations"];
+            data.value = input;
+            data.validations = nil;
         }
         if (goToNext) {
             UIResponder *nextResponder = [self.view viewWithTag:cell.tag + 1];
             [nextResponder becomeFirstResponder];
         }
-        if (updatedNeeded) {
-            cell.data = [LightFormCellData fromDictionary:form[(NSUInteger) indexPath.row]];
+        if (updateNeeded) {
             [tableView beginUpdates];
             [tableView endUpdates];
         }
@@ -181,31 +174,23 @@ willDisplayUsernameCell:(LightFormCell *)cell
 - (void)      tableView:(UITableView *)tableView
 willDisplayPasswordCell:(LightFormCell *)cell
       forRowAtIndexPath:(NSIndexPath *)indexPath {
-    [cell executeBlock:^(BOOL focused, NSString *input, BOOL error, BOOL returned, BOOL goToNext) {
-        NSLog(@"executeBlock %d %d %d for cell at row %tu", focused, error, returned, indexPath.row);
+    [cell executeBlock:^(LightFormCellData *data, BOOL focused, NSString *input, BOOL returned, BOOL goToNext) {
+        NSLog(@"executeBlock %d %d for cell at row %tu", focused, returned, indexPath.row);
         // if user has not entered any text but is focused show the validations
         // if user has entered some text then if they are compliant then dont show any error
         // otherwise show validations
-        BOOL updatedNeeded = NO;
+        BOOL updateNeeded = input != nil || focused;
         if (input) {
-            if (![LightFormViewController isPasswordCompliant:input]) {
-                form[(NSUInteger) indexPath.row][@"validations"] = [LightFormViewController passwordCompliance:input];
-            } else {
-                [form[(NSUInteger) indexPath.row] removeObjectForKey:@"validations"];
-            }
-            updatedNeeded = YES;
-        } else {
-            if (focused) {
-                form[(NSUInteger) indexPath.row][@"validations"] = [LightFormViewController passwordCompliance:input];
-                updatedNeeded = YES;
-            }
+            data.validations = [LightFormViewController isPasswordCompliant:input] ?
+                    nil : [LightFormViewController passwordCompliance:input];
+        } else if (focused) {
+            data.validations = [LightFormViewController passwordCompliance:input];
         }
         if (returned) {
-            form[(NSUInteger) indexPath.row][@"value"] = input;
-            [form[(NSUInteger) indexPath.row] removeObjectForKey:@"validations"];
+            data.value = input;
+            data.validations = nil;
         }
-        if (updatedNeeded) {
-            cell.data = [LightFormCellData fromDictionary:form[(NSUInteger) indexPath.row]];
+        if (updateNeeded) {
             [tableView beginUpdates];
             [tableView endUpdates];
         }
@@ -219,25 +204,18 @@ willDisplayPasswordCell:(LightFormCell *)cell
 - (void)             tableView:(UITableView *)tableView
 willDisplayConfirmPasswordCell:(LightFormCell *)cell
              forRowAtIndexPath:(NSIndexPath *)indexPath {
-    [cell executeBlock:^(BOOL focused, NSString *input, BOOL error, BOOL returned, BOOL goToNext) {
+    [cell executeBlock:^(LightFormCellData *data, BOOL focused, NSString *input, BOOL returned, BOOL goToNext) {
         NSString *password = form[1][@"value"];
-        BOOL updatedNeeded = NO;
+        BOOL updatedNeeded = input != nil || focused;
         if (input) {
-            if ([LightFormViewController isConfirmPasswordCompliant:input originalPassword:password]) {
-                [form[(NSUInteger) indexPath.row] removeObjectForKey:@"validations"];
-            } else {
-                form[(NSUInteger) indexPath.row][@"validations"] = [LightFormViewController confirmPasswordCompliance:input originalPassword:password];
-            }
-            updatedNeeded = YES;
-        } else {
-            if (focused) {
-                form[(NSUInteger) indexPath.row][@"validations"] = [LightFormViewController passwordCompliance:input];
-                updatedNeeded = YES;
-            }
+            data.validations = [LightFormViewController isConfirmPasswordCompliant:input originalPassword:password] ?
+                    nil : [LightFormViewController confirmPasswordCompliance:input originalPassword:password];
+        } else if (focused) {
+            data.validations = [LightFormViewController passwordCompliance:input];
         }
         if (returned) {
-            form[(NSUInteger) indexPath.row][@"value"] = input;
-            [form[(NSUInteger) indexPath.row] removeObjectForKey:@"validations"];
+            data.value = input;
+            data.validations = nil;
         }
         if (updatedNeeded) {
             cell.data = [LightFormCellData fromDictionary:form[(NSUInteger) indexPath.row]];
@@ -245,7 +223,6 @@ willDisplayConfirmPasswordCell:(LightFormCell *)cell
             [tableView endUpdates];
         }
     }];
-
 }
 
 

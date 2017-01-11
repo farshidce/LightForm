@@ -39,7 +39,7 @@ FOUNDATION_EXPORT const CGFloat kAccessoryImageTopMargin;
  *  error = true if the cell has any validations
  *
  */
-- (void)executeBlock:(void (^)(BOOL focused, NSString *input, BOOL validationsLabelVisible, BOOL returned, BOOL goToNext))onStateChange;
+- (void)executeBlock:(void (^)(LightFormCellData *data, BOOL focused, NSString *input, BOOL returned, BOOL goToNext))onStateChange;
 
 // class methods
 + (CGFloat)cellHeightForData:(LightFormCellData *)data withStyle:(id <LightFormStyle>)style;
