@@ -7,8 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LightForm.h"
 
 @interface LightFormViewController : UITableViewController
-
 @end

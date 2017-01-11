@@ -139,8 +139,9 @@ CGFloat const kAccessoryImageTopMargin = 20.0;
                                   views:@{@"inputTextField": _inputTextField,
                                           @"validationsLabel": _validationsLabel}];
     NSString *hFormat = [NSString stringWithFormat:
-            @"H:|-%f-[inputTextField]-%f-[accessoryImage]-%f-|",
-            kTextFieldLeftMargin, kTextFieldRightMargin, kAccessoryImageRightMargin];
+            @"H:|-%f-[inputTextField]-%f-[accessoryImage(%f)]-%f-|",
+            kTextFieldLeftMargin, kTextFieldRightMargin,
+            kAccessoryImageWidth, kAccessoryImageRightMargin];
     NSArray<NSLayoutConstraint *> *horizontal = [NSLayoutConstraint
             constraintsWithVisualFormat:hFormat
                                 options:NSLayoutFormatDirectionLeadingToTrailing
@@ -151,8 +152,10 @@ CGFloat const kAccessoryImageTopMargin = 20.0;
 }
 
 - (NSArray<NSLayoutConstraint *> *)constraintsForErrorLabel {
-    NSString *hFormat = [NSString stringWithFormat:@"H:|-%f-[validationsLabel]-%f-[accessoryImage(%f)]-|",
-                                                   kErrorLabelLeftMargin, kErrorLabelRightMargin, kAccessoryImageWidth];
+    NSString *hFormat = [NSString stringWithFormat:
+            @"H:|-%f-[validationsLabel]-%f-[accessoryImage(%f)]-%f-|",
+            kErrorLabelLeftMargin, kErrorLabelRightMargin,
+            kAccessoryImageWidth, kAccessoryImageRightMargin];
     NSArray<NSLayoutConstraint *> *horizontal = [NSLayoutConstraint
             constraintsWithVisualFormat:hFormat
                                 options:NSLayoutFormatDirectionLeadingToTrailing
@@ -186,10 +189,30 @@ CGFloat const kAccessoryImageTopMargin = 20.0;
 - (void)setCellData:(LightFormCellData *)data {
     _data = data;
     if (_data) {
+        [_data addObserver:self forKeyPath:@"validations" options:NSKeyValueObservingOptionNew context:nil];
         validationsVisible = _data.validations && [_data.validations count] > 0;
     }
     [self refreshView];
 }
+
+- (void)dealloc {
+    if (_data) {
+        [_data removeObserver:self forKeyPath:@"validations" context:nil];
+    }
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary *)change
+                       context:(void *)context {
+    if ([keyPath isEqualToString:@"validations"]) {
+        if (_data) {
+            validationsVisible = _data.validations && [_data.validations count] > 0;
+        }
+        [self refreshView];
+    }
+}
+
 
 - (void)refreshView {
     if (self.style) {

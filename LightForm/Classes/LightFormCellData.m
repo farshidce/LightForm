@@ -11,31 +11,30 @@
 
 }
 
-/**
- * deep copy
- * @param zone
- * @return
- */
-- (id)copyWithZone:(NSZone *)zone {
-
-    LightFormCellData *copy = [[LightFormCellData alloc] init];
-    if (self.accessoryImageUrl) {
-        copy.accessoryImageUrl = [NSString stringWithString:self.accessoryImageUrl];
-    }
-    if (self.placeholder) {
-        copy.placeholder = [NSString stringWithString:self.placeholder];
-    }
-    if (self.value) {
-        copy.value = [NSString stringWithString:self.value];
-    }
-    if (self.validations) {
-        copy.validations = [NSArray arrayWithArray:self.validations];
-    }
-    copy.hasNext = self.hasNext;
-    copy.secureEntry = self.secureEntry;
-    return copy;
-
-}
+///**
+// * deep copy
+// * @param zone
+// * @return
+// */
+//- (id)copyWithZone:(NSZone *)zone {
+//
+//    LightFormCellData *copy = [[LightFormCellData alloc] init];
+//    if (self.accessoryImageUrl) {
+//        copy.accessoryImageUrl = [NSString stringWithString:self.accessoryImageUrl];
+//    }
+//    if (self.placeholder) {
+//        copy.placeholder = [NSString stringWithString:self.placeholder];
+//    }
+//    if (self.value) {
+//        copy.value = [NSString stringWithString:self.value];
+//    }
+//    if (self.validations) {
+//        copy.validations = [NSArray arrayWithArray:self.validations];
+//    }
+//    copy.hasNext = self.hasNext;
+//    copy.secureEntry = self.secureEntry;
+//    return copy;
+//}
 
 /**
  * A convinient method to Create LightFromCellData object from the given dictionary
@@ -57,6 +56,9 @@
         }
         if (dictionary[@"value"]) {
             obj.value = dictionary[@"value"];
+        }
+        if (dictionary[@"key"]) {
+            obj.key = dictionary[@"key"];
         }
         if (dictionary[@"validation"]) {
             obj.validations = @[dictionary[@"validation"]];

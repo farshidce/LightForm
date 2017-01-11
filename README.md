@@ -68,7 +68,7 @@ In order to validate the user input as it is being typed you can handle.
  
  
  ```objectivec
-[cell executeBlock:^(BOOL focused, NSString *input, BOOL error, BOOL returned, BOOL goToNext) {
+[cell executeBlock:^(LightFormCellData *data, BOOL focused, NSString *input, BOOL returned, BOOL goToNext) {
         BOOL updatedNeeded = NO;
         if (input) {
             if (![LightFormViewController isPasswordCompliant:input]) {
@@ -89,7 +89,7 @@ in  order to transfer the control to the next cell ( e.g when user selects next
 button the caller can decide which control should become the first responder next)
 
  ```objectivec
-[cell executeBlock:^(BOOL focused, NSString *input, BOOL error, BOOL returned, BOOL goToNext) {
+[cell executeBlock:^(LightFormCellData *data, BOOL focused, NSString *input, BOOL returned, BOOL goToNext) {
         if (goToNext) {
             UIResponder *nextResponder = [self.view viewWithTag:cell.tag + 1];
             [nextResponder becomeFirstResponder];
@@ -101,7 +101,7 @@ button the caller can decide which control should become the first responder nex
 hide the input validation if the cell is not selected anymore
 
 ```objectivec
-[cell executeBlock:^(BOOL focused, NSString *input, BOOL error, BOOL returned, BOOL goToNext) {
+[cell executeBlock:^(LightFormCellData *data, BOOL focused, NSString *input, BOOL returned, BOOL goToNext) {
         if (returned) {
             form[(NSUInteger) indexPath.row][@"value"] = input;
             [form[(NSUInteger) indexPath.row] removeObjectForKey:@"validations"];

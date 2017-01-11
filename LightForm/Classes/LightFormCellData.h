@@ -6,7 +6,7 @@
 #import <Foundation/Foundation.h>
 
 
-@interface LightFormCellData : NSObject <NSCopying>
+@interface LightFormCellData : NSObject
 
 /*
  * placeholder string to display in the textField
@@ -34,6 +34,8 @@
  * @optional
  */
 @property(nonatomic, retain) NSString *accessoryImageUrl;
+
+@property(nonatomic, retain) NSString *key;
 
 + (LightFormCellData *)fromDictionary:(NSDictionary *)dictionary;
 
