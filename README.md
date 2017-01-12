@@ -128,6 +128,103 @@ hide the input validation if the cell is not selected anymore
 
 
 
+list of properties that can be customized
+
+```objectivec
+@protocol LightFormStyle <NSObject>
+
+@optional
+
+/**
+ * the cell border color
+ */
+@property(nonatomic, retain) UIColor *borderColor;
+
+/*
+ * the cell border color when it is selected
+ */
+@property(nonatomic, retain) UIColor *selectedBorderColor;
+
+/*
+ * the cell border width when it is not selected
+ */
+@property(nonatomic) NSUInteger borderWidth;
+
+/*
+ * the cell border width when it is selected
+ */
+@property(nonatomic) NSUInteger selectedBorderWidth;
+
+/*
+ * the border opacity when cell is not selected
+ */
+@property(nonatomic) float borderOpacity;
+
+/*
+ * the border opacity when cell is selected
+ */
+@property(nonatomic) float selectedBorderOpacity;
+
+/*
+ * the color used for displaying the validation messages
+ */
+@property(nonatomic, retain) UIColor *validationColor;
+
+/*
+ * the font used for displaying the validation messages
+ */
+
+@property(nonatomic, retain) UIFont *validationFont;
+
+/*
+ * the font used for formatting the text input by the user
+ */
+@property(nonatomic, retain) UIFont *titleFont;
+
+/*
+ * the text color for formatting the text input by the user
+ */
+
+@property(nonatomic, retain) UIColor *titleColor;
+
+/*
+ * the font used while displaying the placeholder text
+ */
+@property(nonatomic, retain) UIFont *placeholderFont;
+
+/*
+ * the text color used when displaying the placeholder text
+ */
+@property(nonatomic, retain) UIColor *placeholderColor;
+
+/*
+ * the image displayed on the right side of the cell
+ */
+@property(nonatomic, retain) UIImage *accessoryImage;
+
+/*
+ * they keyboardtype displayed when editing this cell
+ */
+@property(nonatomic) UIKeyboardType keyboardType;
+/*
+ * the autocorrectiontype used when keyboard is active
+ */
+@property(nonatomic) UITextAutocorrectionType autocorrectionType;
+
+/*
+ * the return key type used while this cell is being used. by default this
+ * is set to "Next" or "Go" based on the CellData.hasNext property
+ */
+@property(nonatomic) UIReturnKeyType returnKeyType;
+
+/*
+ * the cell contentInset
+ */
+@property(nonatomic) UIEdgeInsets contentInsets;
+
+@end
+```
+
 
 ## Example
 
