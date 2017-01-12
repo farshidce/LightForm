@@ -101,9 +101,6 @@ willDisplayLightFormCell:(UITableViewCell *)cell
     lightFormCell.data = form[(NSUInteger) indexPath.row];
 
     [lightFormCell executeBlock:^(LightFormCellData *data, BOOL focused, NSString *input, BOOL returned, BOOL goToNext) {
-        NSLog(@"executeBlock %d %d for cell at row %tu", focused, returned, indexPath.row);
-        // if user has not entered any text but is focused show the validations
-        // if user has entered some text then if they are compliant then dont show any of the validations
         BOOL updateNeeded = input != nil || focused;
         if (input) {
             if ([data.key isEqualToString:@"username"]) {

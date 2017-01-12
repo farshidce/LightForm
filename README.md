@@ -15,23 +15,28 @@ handling user inputs and validating the data as the user inputs. The library
 notifies the caller if and when the user changes the input and let the caller
 decide what is validated and what validation messages needs to be displayed.
 
-There are many Objective-C and Swift libraries that let the user create a form
-that for instance can be used in the sign up or log in page. Some of the libraries that I had used
-required understanding multi-layer structures which is required for customizing
-the look and feel of the cell as well as input validation.
+While developing Log In and Sign Up pages I ran into many use cases where the rules for
+username or password and it is common to provide feedback to the user as they type in value.
+This library uses blocks to notify the user of any input changes and then let the user
+update the validation string if needed.
+
+### Features
+
+- customize the font and color used for displaying the placeholder
+- customize the font and color used for displaying the input text
+- customize the image displayed on each cell
+- the keyboard can display "Next" or "Go" based on the cell data.
 
 
-I have designed "LightForm" as a simple library which can be adopted and used without having to go through multiple layers.
-Since I am a big fan of blocks I have used a simple delegate method here to notify the caller about the changes made
-to the control and let the caller respond as needed.
-The LightForm library allows the user to customize the cell and handle the state changes as needed as well.
+While developing Log In and Sign Up pages I ran into many use cases where the rules for
+username or password and it is common to provide feedback to the user as they type in value.
+
 
 In the demo the caller validates the input username and password and as the user types it can provide feedback.
 Since validation label is refreshed upon each user input the user can see immediate feedback.
 
 
 ## Usage
-
 
 pod install
 
@@ -73,19 +78,29 @@ In order to validate the user input as it is being typed you can handle.
  ```objectivec
 [cell executeBlock:^(LightFormCellData *data, BOOL focused, NSString *input, BOOL returned, BOOL goToNext) {
         BOOL updatedNeeded = NO;
+       
         if (input) {
-            if (![LightFormViewController isPasswordCompliant:input]) {
-                form[(NSUInteger) indexPath.row][@"validations"] = [LightFormViewController passwordCompliance:input];
-            } else {
-                [form[(NSUInteger) indexPath.row] removeObjectForKey:@"validations"];
-            }
-            // update validation labels
-            cell.data = [LightFormCellData fromDictionary:form[(NSUInteger) indexPath.row]];
-            [tableView beginUpdates];
-            [tableView endUpdates];
+            // format the validation message as red
+            data.validations = @[[[NSAttributedString alloc] 
+            initWithString:@"x at least 8 characters" attributes:@{NSForegroundColorAttributeName: [UIColor redColor]}]];
+            // or if you dont need to format the validation message
+            data.validations = @[@"x at least 8 characters"];
         }
-}];
+];
 
+```
+
+implement this method in order to specify the height for this cell
+
+
+
+```objectivec
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+
+        return [LightFormCell cellHeightForData:form[(NSUInteger) indexPath.row]
+                                      withStyle:[[LightFormDefaultStyle alloc] init]];
+
+}
 ```
 
 in  order to transfer the control to the next cell ( e.g when user selects next 
@@ -106,11 +121,13 @@ hide the input validation if the cell is not selected anymore
 ```objectivec
 [cell executeBlock:^(LightFormCellData *data, BOOL focused, NSString *input, BOOL returned, BOOL goToNext) {
         if (returned) {
-            form[(NSUInteger) indexPath.row][@"value"] = input;
-            [form[(NSUInteger) indexPath.row] removeObjectForKey:@"validations"];
+            data.validations = nil;
         }
-}];
+];
 ```
+
+
+
 
 ## Example
 
@@ -126,6 +143,14 @@ it, simply add the following line to your Podfile:
 ```ruby
 pod "LightForm"
 ```
+
+
+## Todo
+
+1- add ability to show or hide the password
+2- add ability to modify the placeholder or text font and color without having to refresh
+    the cell
+3- add a protocol that can be used to handle the input validation
 
 ## Author
 
